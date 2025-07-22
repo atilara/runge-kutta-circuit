@@ -32,31 +32,31 @@ def rk4(f, x0, t0, tf, h, R, L, C, tipo_fonte, V0=0, A=0, f_onda=0.0):
 
 st.title("Simulador de Circuito RLC com Método de Runge-Kutta")
 
-st.sidebar.header("Parâmetros do Circuito")
+st.markdown("### Parâmetros do Circuito")
 
-R = st.sidebar.number_input("Resistência (Ω)", min_value=0.0, max_value=100.0, value=10.0, format="%.2f")
-L = st.sidebar.number_input("Indutância (H)", min_value=0.001, max_value=1.0, value=0.1, format="%.4f")
-C = st.sidebar.number_input(
-    "Capacitância (F)",
-    min_value=1e-6,
-    max_value=0.1,
-    value=0.001,
-    format="%.6f",
-    step=1e-6,
-)
+col1, col2, col3 = st.columns(3)
+with col1:
+    R = st.number_input("Resistência (Ω)", min_value=0.0, max_value=100.0, value=10.0, format="%.2f")
+with col2:
+    L = st.number_input("Indutância (H)", min_value=0.001, max_value=1.0, value=0.1, format="%.4f")
+with col3:
+    C = st.number_input("Capacitância (F)", min_value=1e-6, max_value=0.1, value=0.001, format="%.6f", step=1e-6)
 
-tipo_fonte = st.sidebar.selectbox("Tipo de Fonte", ["DC", "AC"])
+tipo_fonte = st.selectbox("Tipo de Fonte", ["DC", "AC"])
 
 if tipo_fonte == "DC":
-    V0 = st.sidebar.number_input("Tensão Contínua (V)", min_value=0.0, max_value=50.0, value=10.0, format="%.2f")
+    V0 = st.number_input("Tensão Contínua (V)", min_value=0.0, max_value=50.0, value=10.0, format="%.2f")
     A = 0
     f_onda = 0
 else:
-    A = st.sidebar.number_input("Amplitude da Fonte AC (V)", min_value=0.0, max_value=50.0, value=10.0, format="%.2f")
-    f_onda = st.sidebar.number_input("Frequência (Hz)", min_value=1.0, max_value=1000.0, value=50.0, format="%.2f")
+    col4, col5 = st.columns(2)
+    with col4:
+        A = st.number_input("Amplitude da Fonte AC (V)", min_value=0.0, max_value=50.0, value=10.0, format="%.2f")
+    with col5:
+        f_onda = st.number_input("Frequência (Hz)", min_value=1.0, max_value=1000.0, value=50.0, format="%.2f")
     V0 = 0
 
-tf = st.sidebar.number_input("Tempo total de simulação (s)", min_value=0.01, max_value=1.0, value=0.1, format="%.4f")
+tf = st.number_input("Tempo total de simulação (s)", min_value=0.01, max_value=1.0, value=0.1, format="%.4f")
 h = 0.0001
 
 x0 = [0, 0]
