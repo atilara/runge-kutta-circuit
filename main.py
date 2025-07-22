@@ -32,6 +32,8 @@ def rk4(f, x0, t0, tf, h, R, L, C, tipo_fonte, V0=0, A=0, f_onda=0.0):
 
 st.title("Simulador de Circuito RLC com Método de Runge-Kutta")
 
+st.image("media/circuito.png", caption="Diagrama do Circuito RLC Série", use_container_width=False)
+
 st.markdown("### Parâmetros do Circuito")
 
 col1, col2, col3 = st.columns(3)
