@@ -31,7 +31,7 @@ else:
         f_onda = st.number_input("Frequência (Hz)", min_value=1.0, max_value=1000.0, value=50.0, format="%.2f")
     V0 = 0
 
-tf = st.number_input("Tempo total de simulação (s)", min_value=0.01, max_value=1.0, value=0.1, format="%.4f")
+tf = st.number_input("Tempo total de simulação (s)", min_value=0.01, max_value=10.0, value=1.0, format="%.4f")
 h = 0.0001
 
 x0 = [0, 0]
